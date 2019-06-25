@@ -50,6 +50,59 @@ var game = {
 	strArray: [69,"<button type='button' onclick='u1()'>Make More Flowers<br>Costs 1,000 flowers<br>F/C: 1->10</button><br>","<button type='button' onclick='u2()'>Bigger Leaves 1<br>Costs 500 flowers<br>1 Leaf Clovers' production is doubled.</button><br>","<button type='button' onclick='u3()'>Bigger Leaves 2<br>Costs 500,000 flowers<br>1 Leaf Clovers' production is doubled.</button><br>"]
 };
 var AFPS;
+function hardReset(){
+	game = {
+	state: {
+	flower: 0,
+	C1: {
+		amount: 0,
+		cost: 40,
+		prod: 1,
+		interval: 1,
+		buy: function() {
+			if(game.state.flower < this.cost) return 0;
+			if(game.state.flower >= this.cost) {
+				game.state.flower-=this.cost;
+				this.amount++;
+				this.cost = Math.pow(1.03,this.amount)*40;
+			}
+		}
+	},
+		C3: {
+			amount: 0,
+			cost: 2000,
+			prod: 50,
+			interval: 3,
+			buy: function() {
+				if(game.state.flower < this.cost) return 0;
+				if(game.state.flower >= this.cost) {
+					game.state.flower-=this.cost;
+					this.amount++;
+					this.cost = Math.pow(1.05,this.amount)*2000;
+				}
+			}
+		},
+		C4: {
+			amount: 0,
+			cost: 2e6,
+			prod: 3e5,
+			interval: 4,
+			buy: function() {
+				if(game.state.flower < this.cost) return 0;
+				if(game.state.flower >= this.cost) {
+					game.state.flower-=this.cost;
+					this.amount++;
+					this.cost = Math.pow(1.1,this.amount)*2e6;
+				}
+			}
+		},
+		tap: 1
+	},
+	upgradeArray: [1337,0,0,0],
+	buttonArray: [420,"<button type='button' onclick='u1()'>Make More Flowers<br>Costs 1,000 flowers<br>F/C: 1->10</button><br>","<button type='button' onclick='u2()'>Bigger Leaves 1<br>Costs 500 flowers<br>1 Leaf Clovers' production is doubled.</button><br>",""],
+	strArray: [69,"<button type='button' onclick='u1()'>Make More Flowers<br>Costs 1,000 flowers<br>F/C: 1->10</button><br>","<button type='button' onclick='u2()'>Bigger Leaves 1<br>Costs 500 flowers<br>1 Leaf Clovers' production is doubled.</button><br>","<button type='button' onclick='u3()'>Bigger Leaves 2<br>Costs 500,000 flowers<br>1 Leaf Clovers' production is doubled.</button><br>"]
+};
+}
 function commaNumber(x) {
 	x = x.toString();
 	var pattern = /(-?\d+)(\d{3})/;
