@@ -102,6 +102,7 @@ function hardReset(){
 	buttonArray: [420,"<button type='button' onclick='u1()'>Make More Flowers<br>Costs 1,000 flowers<br>F/C: 1->10</button><br>","<button type='button' onclick='u2()'>Bigger Leaves 1<br>Costs 500 flowers<br>1 Leaf Clovers' production is doubled.</button><br>",""],
 	strArray: [69,"<button type='button' onclick='u1()'>Make More Flowers<br>Costs 1,000 flowers<br>F/C: 1->10</button><br>","<button type='button' onclick='u2()'>Bigger Leaves 1<br>Costs 500 flowers<br>1 Leaf Clovers' production is doubled.</button><br>","<button type='button' onclick='u3()'>Bigger Leaves 2<br>Costs 500,000 flowers<br>1 Leaf Clovers' production is doubled.</button><br>"]
 };
+	save();
 }
 function commaNumber(x) {
 	x = x.toString();
