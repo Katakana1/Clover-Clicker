@@ -112,7 +112,7 @@ function commaNumber(x) {
 	return x;
 }
 setInterval(function() {
-AFPS = Math.round(game.state.C1.amount + (game.state.C3.prod/game.state.C3.interval * game.state.C3.amount) + (game.state.C4.prod/game.state.C4.interval * game.state.C4.amount))
+AFPS = Math.round(game.state.C1.prod * game.state.C1.amount + (game.state.C3.prod/game.state.C3.interval * game.state.C3.amount) + (game.state.C4.prod/game.state.C4.interval * game.state.C4.amount))
 }, 20);
 function UpdateAFPS(){
 	document.getElementById('AverageFlowerPerSecond').innerHTML = commaNumber(AFPS);
@@ -122,7 +122,7 @@ function MakeFlowers(amt){
 	document.getElementById("flower").innerHTML = commaNumber(Math.round(game.state.flower));
 }
 setInterval(function() { // Interval function for 1-leaf clovers
-	MakeFlowers(game.state.C1.amount);
+	MakeFlowers(game.state.C1.prod * game.state.C1.amount);
 }, game.state.C1.interval*1000);
 setInterval(function(){ // Interval function for 3-leaf clovers
 	MakeFlowers(game.state.C3.prod * game.state.C3.amount);
