@@ -120,14 +120,14 @@ function save() {
 function load() {
 	if(!localStorage.cc) return;
 	game = JSON.parse(atob(localStorage.cc));
-	transformToDecimal(game);
+//	transformToDecimal(game);
 }
-function transformToDecimal(object) { 
-	for(var i in object) {
-		if(typeof(object[i]) == "string" && !isNaN(new Decimal(object[i]).mag)) object[i] = new Decimal(object[i]); 
-		if(typeof(object[i]) == "object") transformToDecimal(object[i]);
-	}
-}
+//function transformToDecimal(object) { 
+//	for(var i in object) {
+//		if(typeof(object[i]) == "string" && !isNaN(new Decimal(object[i]).mag)) object[i] = new Decimal(object[i]); 
+//		if(typeof(object[i]) == "object") transformToDecimal(object[i]);
+//	}
+//}
 load();
 setInterval(function(){
 	save();
