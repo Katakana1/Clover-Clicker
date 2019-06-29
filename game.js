@@ -21,9 +21,17 @@ var game = {
 	},
 	tap: 1
 	},
-	upgradeArray: [1337,0,0,0],
-	buttonArray: [420,"<button type='button' onclick='u1()'>Make More Flowers<br>Costs 200 flowers<br>F/C: 1->10</button><br>","<button type='button' onclick='u2()'>Bigger Leaves 1<br>Costs 500 flowers<br>Multiply 1 Leaf Clovers' production by 5.</button><br>",""],
-	strArray: [69,"<button type='button' onclick='u1()'>Make More Flowers<br>Costs 200 flowers<br>F/C: 1->10</button><br>","<button type='button' onclick='u2()'>Bigger Leaves 1<br>Costs 500 flowers<br>Multiply 1 Leaf Clovers' production by 5.</button><br>","<button type='button' onclick='u3()'>Bigger Leaves 2<br>Costs 1,000 flowers<br>Multiply 1 Leaf Clovers' production by 4.</button><br>"]
+	upgradeArray: [1337,0,0,0,0,0,0,0,0],
+	buttonArray: [420,"<button type='button' onclick='u1()'>Make More Flowers<br>Costs 200 flowers<br>F/C: 1->10</button><br>","<button type='button' onclick='u2()'>Bigger Leaves 1<br>Costs 1,000 flowers<br>Multiply 1 Leaf Clovers' production by 5.</button><br>","","","","","",""],
+	strArray: [69,
+		   "<button type='button' onclick='u1()'>Make More Flowers<br>Costs 200 flowers<br>F/C: 1->10</button><br>",
+		   "<button type='button' onclick='u2()'>Bigger Leaves 1<br>Costs 1,000 flowers<br>Multiply 1 Leaf Clovers' production by 5.</button><br>",
+		   "<button type='button' onclick='u3()'>Bigger Leaves 2<br>Costs 10,000 flowers<br>Multiply 1 Leaf Clovers' production by 4.</button><br>",
+		   "<button type='button' onclick='u4()'>Bigger Leaves 3<br>Costs 50,000 flowers<br>Multiply 1 Leaf Clovers' production by 3.</button><br>",
+		   "<button type='button' onclick='u5()'>Bigger Leaves 4<br>Costs 170,000 flowers<br>Double 1 Leaf Clovers' production.</button><br>",
+		   "<button type='button' onclick='u6()'>Bigger Leaves 5<br>Costs 400,000 flowers<br>Double 1 Leaf Clovers' production.</button><br>",
+		   "<button type='button' onclick='u7()'>Bigger Leaves 6<br>Costs 800,000 flowers<br>Double 1 Leaf Clovers' production.</button><br>",
+		   "<button type='button' onclick='u8()'>Bigger Leaves 7<br>Costs 1,800,000 flowers<br>Double 1 Leaf Clovers' production.</button><br>"]
 };
 var AFPS;
 function hardReset() {
@@ -50,9 +58,17 @@ function hardReset() {
 	},
 	tap: 1
 	},
-	upgradeArray: [1337,0,0,0],
-	buttonArray: [420,"<button type='button' onclick='u1()'>Make More Flowers<br>Costs 200 flowers<br>F/C: 1->10</button><br>","<button type='button' onclick='u2()'>Bigger Leaves 1<br>Costs 500 flowers<br>Multiply 1 Leaf Clovers' production by 5.</button><br>",""],
-	strArray: [69,"<button type='button' onclick='u1()'>Make More Flowers<br>Costs 200 flowers<br>F/C: 1->10</button><br>","<button type='button' onclick='u2()'>Bigger Leaves 1<br>Costs 500 flowers<br>Multiply 1 Leaf Clovers' production by 5.</button><br>","<button type='button' onclick='u3()'>Bigger Leaves 2<br>Costs 1,000 flowers<br>Multiply 1 Leaf Clovers' production by 4.</button><br>"]
+	upgradeArray: [1337,0,0,0,0,0,0,0,0],
+	buttonArray: [420,"<button type='button' onclick='u1()'>Make More Flowers<br>Costs 200 flowers<br>F/C: 1->10</button><br>","<button type='button' onclick='u2()'>Bigger Leaves 1<br>Costs 1,000 flowers<br>Multiply 1 Leaf Clovers' production by 5.</button><br>","","","","","",""],
+	strArray: [69,
+		   "<button type='button' onclick='u1()'>Make More Flowers<br>Costs 200 flowers<br>F/C: 1->10</button><br>",
+		   "<button type='button' onclick='u2()'>Bigger Leaves 1<br>Costs 1,000 flowers<br>Multiply 1 Leaf Clovers' production by 5.</button><br>",
+		   "<button type='button' onclick='u3()'>Bigger Leaves 2<br>Costs 10,000 flowers<br>Multiply 1 Leaf Clovers' production by 4.</button><br>",
+		   "<button type='button' onclick='u4()'>Bigger Leaves 3<br>Costs 50,000 flowers<br>Multiply 1 Leaf Clovers' production by 3.</button><br>",
+		   "<button type='button' onclick='u5()'>Bigger Leaves 4<br>Costs 170,000 flowers<br>Double 1 Leaf Clovers' production.</button><br>",
+		   "<button type='button' onclick='u6()'>Bigger Leaves 5<br>Costs 400,000 flowers<br>Double 1 Leaf Clovers' production.</button><br>",
+		   "<button type='button' onclick='u7()'>Bigger Leaves 6<br>Costs 800,000 flowers<br>Double 1 Leaf Clovers' production.</button><br>",
+		   "<button type='button' onclick='u8()'>Bigger Leaves 7<br>Costs 1,800,000 flowers<br>Double 1 Leaf Clovers' production.</button><br>"]
 };
 }
 function commaNumber(x) {
@@ -108,14 +124,14 @@ function buyC4() {
 function u1(){
 	if(game.state.flower >= 200 && game.upgradeArray[1] == 0){
 		game.state.flower-=200;
-		game.state.tap*10;
+		game.state.tap*=10;
 		game.upgradeArray[1] = 1;
 		game.buttonArray[1] = "";
 	}
 }
 function u2(){
-	if(game.state.flower >= 500 && game.upgradeArray[2] == 0){
-		game.state.flower-=500;
+	if(game.state.flower >= 1000 && game.upgradeArray[2] == 0){
+		game.state.flower-=1000;
 		game.state.C1.prod*=5;
 		game.upgradeArray[2] = 1;
 		game.buttonArray[2] = "";
@@ -123,11 +139,56 @@ function u2(){
 	}
 }
 function u3(){
-	if(game.state.flower >= 1000 && game.upgradeArray[3] == 0){
-		game.state.flower-=1000;
+	if(game.state.flower >= 10000 && game.upgradeArray[3] == 0){
+		game.state.flower-=10000;
 		game.state.C1.prod*=4;
 		game.upgradeArray[3] = 1;
 		game.buttonArray[3] = "";
+		game.buttonArray[4] = game.strArray[4];
+	}
+}
+function u4(){
+	if(game.state.flower >= 50000 && game.upgradeArray[4] == 0){
+		game.state.flower-=50000;
+		game.state.C1.prod*=3;
+		game.upgradeArray[4] = 1;
+		game.buttonArray[4] = "";
+		game.buttonArray[5] = game.strArray[5];
+	}
+}
+function u5(){
+	if(game.state.flower >= 170000 && game.upgradeArray[5] == 0){
+		game.state.flower-=170000;
+		game.state.C1.prod*=2;
+		game.upgradeArray[5] = 1;
+		game.buttonArray[5] = "";
+		game.buttonArray[6] = game.strArray[6];
+	}
+}
+function u6(){
+	if(game.state.flower >= 400000 && game.upgradeArray[6] == 0){
+		game.state.flower-=400000;
+		game.state.C1.prod*=2;
+		game.upgradeArray[6] = 1;
+		game.buttonArray[6] = "";
+		game.buttonArray[7] = game.strArray[7];
+	}
+}
+function u7(){
+	if(game.state.flower >= 800000 && game.upgradeArray[7] == 0){
+		game.state.flower-=800000;
+		game.state.C1.prod*=2;
+		game.upgradeArray[7] = 1;
+		game.buttonArray[7] = "";
+		game.buttonArray[8] = game.strArray[8];
+	}
+}
+function u8(){
+	if(game.state.flower >= 1800000 && game.upgradeArray[8] == 0){
+		game.state.flower-=1800000;
+		game.state.C1.prod*=2;
+		game.upgradeArray[8] = 1;
+		game.buttonArray[8] = "";
 	}
 }
 setInterval(function(){
@@ -141,12 +202,12 @@ setInterval(function(){
 	document.getElementById("C4s").innerHTML = commaNumber(Math.round(game.state.C4.amount));
 	document.getElementById("C4cost").innerHTML = commaNumber(Math.round(game.state.C4.cost));
 	document.getElementById("C4prod").innerHTML = commaNumber(Math.round(game.state.C4.prod));
-	document.getElementById("Upgrades").innerHTML = game.buttonArray[1]+game.buttonArray[2]+game.buttonArray[3];
+	document.getElementById("Upgrades").innerHTML = game.buttonArray[1]+game.buttonArray[2]+game.buttonArray[3]+game.buttonArray[4]+game.buttonArray[5]+game.buttonArray[6]+game.buttonArray[7]+game.buttonArray[8];
 }, 40);
-function save() {
+function save(){
 	localStorage.cc = btoa(JSON.stringify(game));
 }
-function load() {
+function load(){
 	if(!localStorage.cc) return;
 	game = JSON.parse(atob(localStorage.cc));
 //	transformToDecimal(game);
