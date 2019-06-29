@@ -15,15 +15,15 @@ var game = {
 	},
 	C4: {
 		amount: 0,
-		cost: 2e6,
-		prod: 3e5,
+		cost: 60000,
+		prod: 24000,
 		interval: 4
 	},
 	tap: 1
 	},
 	upgradeArray: [1337,0,0,0],
-	buttonArray: [420,"<button type='button' onclick='u1()'>Make More Flowers<br>Costs 1,000 flowers<br>F/C: 1->10</button><br>","<button type='button' onclick='u2()'>Bigger Leaves 1<br>Costs 500 flowers<br>1 Leaf Clovers' production is doubled.</button><br>",""],
-	strArray: [69,"<button type='button' onclick='u1()'>Make More Flowers<br>Costs 1,000 flowers<br>F/C: 1->10</button><br>","<button type='button' onclick='u2()'>Bigger Leaves 1<br>Costs 500 flowers<br>1 Leaf Clovers' production is doubled.</button><br>","<button type='button' onclick='u3()'>Bigger Leaves 2<br>Costs 500,000 flowers<br>1 Leaf Clovers' production is doubled.</button><br>"]
+	buttonArray: [420,"<button type='button' onclick='u1()'>Make More Flowers<br>Costs 200 flowers<br>F/C: 1->10</button><br>","<button type='button' onclick='u2()'>Bigger Leaves 1<br>Costs 500 flowers<br>Multiply 1 Leaf Clovers' production by 5.</button><br>",""],
+	strArray: [69,"<button type='button' onclick='u1()'>Make More Flowers<br>Costs 200 flowers<br>F/C: 1->10</button><br>","<button type='button' onclick='u2()'>Bigger Leaves 1<br>Costs 500 flowers<br>Multiply 1 Leaf Clovers' production by 5.</button><br>","<button type='button' onclick='u3()'>Bigger Leaves 2<br>Costs 1,000 flowers<br>Multiply 1 Leaf Clovers' production by 4.</button><br>"]
 };
 var AFPS;
 function hardReset() {
@@ -44,15 +44,15 @@ function hardReset() {
 	},
 	C4: {
 		amount: 0,
-		cost: 2e6,
-		prod: 3e5,
+		cost: 60000,
+		prod: 24000,
 		interval: 4
 	},
 	tap: 1
 	},
 	upgradeArray: [1337,0,0,0],
-	buttonArray: [420,"<button type='button' onclick='u1()'>Make More Flowers<br>Costs 1,000 flowers<br>F/C: 1->10</button><br>","<button type='button' onclick='u2()'>Bigger Leaves 1<br>Costs 500 flowers<br>1 Leaf Clovers' production is doubled.</button><br>",""],
-	strArray: [69,"<button type='button' onclick='u1()'>Make More Flowers<br>Costs 1,000 flowers<br>F/C: 1->10</button><br>","<button type='button' onclick='u2()'>Bigger Leaves 1<br>Costs 500 flowers<br>1 Leaf Clovers' production is doubled.</button><br>","<button type='button' onclick='u3()'>Bigger Leaves 2<br>Costs 500,000 flowers<br>1 Leaf Clovers' production is doubled.</button><br>"]
+	buttonArray: [420,"<button type='button' onclick='u1()'>Make More Flowers<br>Costs 200 flowers<br>F/C: 1->10</button><br>","<button type='button' onclick='u2()'>Bigger Leaves 1<br>Costs 500 flowers<br>Multiply 1 Leaf Clovers' production by 5.</button><br>",""],
+	strArray: [69,"<button type='button' onclick='u1()'>Make More Flowers<br>Costs 200 flowers<br>F/C: 1->10</button><br>","<button type='button' onclick='u2()'>Bigger Leaves 1<br>Costs 500 flowers<br>Multiply 1 Leaf Clovers' production by 5.</button><br>","<button type='button' onclick='u3()'>Bigger Leaves 2<br>Costs 1,000 flowers<br>Multiply 1 Leaf Clovers' production by 4.</button><br>"]
 };
 }
 function commaNumber(x) {
@@ -102,13 +102,13 @@ function buyC4() {
 	if(game.state.flower >= game.state.C4.cost) {
 		game.state.flower-=game.state.C4.cost;
 		game.state.C4.amount++;
-		game.state.C4.cost = Math.pow(1.1,game.state.C4.amount)*2e6;
+		game.state.C4.cost = Math.pow(1.1,game.state.C4.amount)*60000;
 	}
 }
 function u1(){
-	if(game.state.flower >= 1000 && game.upgradeArray[1] == 0){
-		game.state.flower-=1000;
-		game.state.tap = 10;
+	if(game.state.flower >= 200 && game.upgradeArray[1] == 0){
+		game.state.flower-=200;
+		game.state.tap*10;
 		game.upgradeArray[1] = 1;
 		game.buttonArray[1] = "";
 	}
@@ -116,16 +116,16 @@ function u1(){
 function u2(){
 	if(game.state.flower >= 500 && game.upgradeArray[2] == 0){
 		game.state.flower-=500;
-		game.state.C1.prod*=2;
+		game.state.C1.prod*=5;
 		game.upgradeArray[2] = 1;
 		game.buttonArray[2] = "";
 		game.buttonArray[3] = game.strArray[3];
 	}
 }
 function u3(){
-	if(game.state.flower >= 500000 && game.upgradeArray[3] == 0){
-		game.state.flower-=500000;
-		game.state.C1.prod*=2;
+	if(game.state.flower >= 1000 && game.upgradeArray[3] == 0){
+		game.state.flower-=1000;
+		game.state.C1.prod*=4;
 		game.upgradeArray[3] = 1;
 		game.buttonArray[3] = "";
 	}
