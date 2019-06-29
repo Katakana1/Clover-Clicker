@@ -94,7 +94,7 @@ function buyC3() {
 	if(game.state.flower >= game.state.C3.cost) {
 		game.state.flower-=game.state.C3.cost;
 		game.state.C3.amount++;
-		game.state.C3.cost = Math.pow(1.03,game.state.C3.amount)*2000;
+		game.state.C3.cost = Math.pow(1.05,game.state.C3.amount)*2000;
 	}
 }
 function buyC4() {
@@ -102,7 +102,7 @@ function buyC4() {
 	if(game.state.flower >= game.state.C4.cost) {
 		game.state.flower-=game.state.C4.cost;
 		game.state.C4.amount++;
-		game.state.C4.cost = Math.pow(1.03,game.state.C4.amount)*2e6;
+		game.state.C4.cost = Math.pow(1.1,game.state.C4.amount)*2e6;
 	}
 }
 function u1(){
